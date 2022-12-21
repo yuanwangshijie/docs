@@ -13,11 +13,11 @@
 
 >服务器搭建集群后：
 
-![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:07:10.webp)
+![](../static/img/nginx-01.png)
 
 >在搭建集群后，使用Nginx做反向代理：
 
-![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:06:54.webp)
+![](../static/img/nginx-02.png)
 
 ### 1.2 Nginx介绍
 >Nginx是由俄罗斯人研发的，应对Rambler的网站并发，并且2004年发布的第一个版本
@@ -185,7 +185,7 @@ docker-compose restart
 > 
 > 3.帮助咱们实现突破访问权限，提高访问的速度，对目标服务器隐藏客户端的ip地址
 
-![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:06:17.webp)
+![](../static/img/nginx-03.png)
 
 >反向代理：
 >
@@ -195,7 +195,7 @@ docker-compose restart
 >
 >3.达到负载均衡，并且可以隐藏服务器真正的ip地址
 
-![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:06:40.webp)
+![](../static/img/nginx-04.png)
 
 ### 3.2 基于Nginx实现反向代理
 >准备一个目标服务器
@@ -424,7 +424,7 @@ docker-compose restart
 > 
 > 准备haproxy，提供一个虚拟的路径，统一的去接收用户的请求
 
-![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:07:04.webp)
+![](../static/img/nginx-05.png)
 
 ### 6.2 搭建
 ```

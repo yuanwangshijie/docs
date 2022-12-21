@@ -7,7 +7,7 @@
 ## 一、queryWrapper是什么
 >queryWrapper是mybatis plus中实现查询的对象封装操作类，他的层级关系如下
 
-![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:09:07.webp)
+![](../static/img/mybatis-01.png)
 
 > 在上面的图片中
 > Wrapper ： 条件构造抽象类，最顶端父类，抽象类中提供4个方法西面贴源码展示
@@ -83,7 +83,7 @@ public interface IPbListBlackMapper extends BaseMapper<PbListBlack> {
 ```
 
 ## 三、QueryWrapper的方法
-![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:08:47.webp)
+![](../static/img/mybatis-02.png)
 
 ## 四、总结
 &emsp;&emsp;上面的博客内容虽然简单，也只展示了一个查询的功能。在你实际使用的时候，可以按照  条件构造器上面包含的的方法，设置你查询数据的条件，调用BaseMapper里相应的方法即可

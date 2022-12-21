@@ -1,4 +1,4 @@
-<img width="180px" style="border-radius: 50%" bor src="https://alist.wqsa.cc/d/blog/pictures/touxiang.jpg">
+<img width="180px" style="border-radius: 50%"  src="static/img/touxiang.jpg" alt="">
 
 # 远望世界' Blog
 
