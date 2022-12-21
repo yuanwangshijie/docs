@@ -1,8 +1,10 @@
+# MybatisPlus条件构造器
+
 >本文转自 https://blog.csdn.net/bird_tp/article/details/105587582
 
 >首先奉上mybatis plus的官方文档链接，再看本博客有不清晰的地方，可以查看文档 https://baomidou.com/
 
-# 一、queryWrapper是什么
+## 一、queryWrapper是什么
 >queryWrapper是mybatis plus中实现查询的对象封装操作类，他的层级关系如下
 
 ![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:09:07.webp)
@@ -16,7 +18,7 @@
 > QueryWrapper ： Entity 对象封装操作类，不是用lambda语法
 > UpdateWrapper ： Update 条件封装，用于Entity对象更新操作
 
-二、使用demo
+## 二、使用demo
 
 ```
 使用的关键的代码
@@ -80,8 +82,8 @@ public interface IPbListBlackMapper extends BaseMapper<PbListBlack> {
 当你的Mapper 继承BaseMapper接口后，无需编写 mapper.xml 文件，即可获得CRUD功能
 ```
 
-三、QueryWrapper的方法
+## 三、QueryWrapper的方法
 ![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:08:47.webp)
 
-# 四、总结
+## 四、总结
 &emsp;&emsp;上面的博客内容虽然简单，也只展示了一个查询的功能。在你实际使用的时候，可以按照  条件构造器上面包含的的方法，设置你查询数据的条件，调用BaseMapper里相应的方法即可

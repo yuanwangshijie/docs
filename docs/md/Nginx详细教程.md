@@ -1,6 +1,8 @@
+# Nginx详细教程
+
 >本文转自 https://www.jianshu.com/p/96d3b1fba09b
-# 一、Nginx介绍
-## 1.1 引言
+## 一、Nginx介绍
+### 1.1 引言
 >为什么要学习Nginx
 >
 >问题1：客户端到底要将请求发送给哪台服务器
@@ -17,7 +19,7 @@
 
 ![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:06:54.webp)
 
-## 1.2 Nginx介绍
+### 1.2 Nginx介绍
 >Nginx是由俄罗斯人研发的，应对Rambler的网站并发，并且2004年发布的第一个版本
 
 >Nginx的特点
@@ -28,8 +30,8 @@
 >
 >3.占用内存小，并发能力强（随便配置一下就是5w+，而tomcat的默认线程池是150）
 
-# 二、Nginx的安装
-## 2.1 安装Nginx
+## 二、Nginx的安装
+### 2.1 安装Nginx
 >使用docker-compose安装
 ```
 #在/opt目录下创建docker_nginx目录
@@ -51,7 +53,7 @@ services:
 ```
 执行docker-compose up -d
 ```
-## 2.2 Nginx的配置文件
+### 2.2 Nginx的配置文件
 >Nginx的核心配置文件
 ```
 # 查看当前nginx的配置需要进入docker容器中
@@ -128,7 +130,7 @@ server {
 # server_name代表Nginx接受请求的IP
 ```
 
-## 2.3 修改docker-compose文件
+### 2.3 修改docker-compose文件
 ```
 # 退出容器
 exit
@@ -173,8 +175,8 @@ server {
 # 重启nginx
 docker-compose restart
 ```
-# 三、Nginx的反向代理
-## 3.1 正向代理和反向代理介绍
+## 三、Nginx的反向代理
+### 3.1 正向代理和反向代理介绍
 > 正向代理：
 > 
 > 1.正向代理服务是由客户端设立的
@@ -195,7 +197,7 @@ docker-compose restart
 
 ![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:06:40.webp)
 
-## 3.2 基于Nginx实现反向代理
+### 3.2 基于Nginx实现反向代理
 >准备一个目标服务器
 >
 >启动tomcat服务器
@@ -232,7 +234,7 @@ docker-compose restart
 ```
 >这时我们访问80端口可以看到8080端口tomcat的默认首页
 
-## 3.3 关于Nginx的location路径映射
+### 3.3 关于Nginx的location路径映射
 ```
 优先级关系：
 (location = ) 
@@ -297,7 +299,7 @@ server {
 ```
 docker-compose restart
 ```
-# 四、Nginx负载均衡
+## 四、Nginx负载均衡
 >Nginx为我们默认提供了三种负载均衡的策略：
 >
 >1.轮询： 将客户端发起的请求，平均分配给每一台服务器
@@ -306,7 +308,7 @@ docker-compose restart
 >
 >3.ip_hash: 基于发起请求的客户端的ip地址不同，他始终会将请求发送到指定的服务器上 就是说如果这个客户端的请求的ip地址不变，那么处理请求的服务器将一直是同一个
 
-## 4.1 轮询
+### 4.1 轮询
 想实现`轮询`负载均衡机制只需要修改配置文件如下
 ```
 upstream my_server{
@@ -323,7 +325,7 @@ server {
     }
 }
 ```
-## 4.2 权重
+### 4.2 权重
 实现`权重`的方式：在配置文件中`upstream`块中加上`weight`
 ```
 upstream my_server{
@@ -340,7 +342,7 @@ server {
     }
 }
 ```
-## 4.3 ip_hash
+### 4.3 ip_hash
 实现`ip_hash`方式：在配置文件`upstream`块中加上`ip_hash`
 ```
 upstream my_server{
@@ -358,7 +360,7 @@ server {
     }
 }
 ```
-# 五、Nginx动静分离
+## 五、Nginx动静分离
 > Nginx的并发能力公式：
 > 
 > worker_processes * worker_connections / 4|2 = Nginx最终的并发能力
@@ -367,14 +369,14 @@ server {
 > 
 > Nginx通过动静分离来提升Nginx的并发能力，更快的给用户响应
 
-## 5.1 动态资源代理
+### 5.1 动态资源代理
 ```
 # 配置如下
 location / {
   proxy_pass 路径;
 }
 ```
-## 5.2 静态资源代理
+### 5.2 静态资源代理
 先修改`docker-compose`文件
 ```
 version: '3.1'
@@ -412,8 +414,8 @@ location / {
 docker-compose restart
 ```
 
-# 六、Nginx集群
-## 6.1 引言
+## 六、Nginx集群
+### 6.1 引言
 > 单点故障，避免nginx的宕机，导致整个程序的崩溃
 > 
 > 准备多台Nginx
@@ -424,7 +426,7 @@ docker-compose restart
 
 ![](https://cdn.staticaly.com/gh/yuanwangshijie/pictures@main/2022-09-10-00:07:04.webp)
 
-## 6.2 搭建
+### 6.2 搭建
 ```
 # 先准备好以下文件放入/opt/docker_nginx_cluster目录中
 # 然后启动容器    注意确保80、8081和8082端口未被占用(或者修改docker-compose.yml中的端口)
