@@ -1,14 +1,3 @@
----
-title: Nginx详细教程
-date: 2022-08-26 09:46:17.696
-updated: 2022-09-23 18:00:31.458
-url: /archives/nginx详细教程
-categories: 
-- 学习笔记
-tags: 
-- Nginx
----
-
 >本文转自 https://www.jianshu.com/p/96d3b1fba09b
 # 一、Nginx介绍
 ## 1.1 引言
