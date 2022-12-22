@@ -600,7 +600,7 @@ backend webserveer
     server nginx_master 127.20.127.50:80 check inter 2000 rise 2 fall 5
 ```
 
-# 七、内置变量
+## 七、内置变量
 ```
 $args                    #请求中的参数值
 $query_string            #同 $args
