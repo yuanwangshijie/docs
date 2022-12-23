@@ -8,6 +8,8 @@
         <title>远望世界' Blog</title>
         <link rel="shortcut icon" href="static/img/touxiang.ico" type="image/x-icon">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+        <!-- 目录折叠样式-箭头 -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css"/>
     </head>
     <style></style>
     <body style="">
@@ -17,13 +19,26 @@
                 name: '远望世界\' Blog',
                 repo: 'https://github.com/yuanwangshijie/yuanwangshijie.github.io',
                 coverpage: 'coverpage.md',
-                loadNavbar: 'navbar.md'
+                loadNavbar: 'navbar.md',
+                loadSidebar: 'sidebar.md',
+                subMaxLevel: 6,
+                sidebarDisplayLevel: 1,
+                alias: {
+                    '/.*navbar.md': 'navbar.md',
+                    '/.*sidebar.md': 'sidebar.md'
+                }
             }
         </script>
         <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+        <!-- 目录折叠 -->
+        <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+        <!-- 复制按钮 -->
         <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+        <!-- 图片缩放 -->
         <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+        <!-- emoji -->
         <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+        <!-- 代码高亮 -->
         <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
     </body>
 </html>
