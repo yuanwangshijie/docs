@@ -3,7 +3,7 @@
 
 # 远望世界' Blog
 
-* 这是是作者自用的文档，用于记录学习过程中遇到的问题和知识。
+* 这是作者自用的文档，用于记录学习过程中遇到的问题和知识。
 
 [GitHub](https://github.com/yuanwangshijie/yuanwangshijie.github.io)
 [开始阅读](README.md)
