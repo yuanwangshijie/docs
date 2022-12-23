@@ -9,8 +9,22 @@
         <link rel="shortcut icon" href="static/img/touxiang.ico" type="image/x-icon">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
     </head>
-    <body>
+    <style>
+        div::after {
+            content: "";
+            background: url("https://api.ixiaowai.cn/api/api.php");
+            opacity: 0.3;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
+    <body style="">
         <div id="app">加载中...</div>
+        <div id="after"></div>
         <script>
             window.$docsify = {
                 name: '远望世界\' Blog',
