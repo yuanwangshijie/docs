@@ -35,7 +35,7 @@ sectionQueryWrapper.eq("BLTYPE", 1);
 这两句的意思是PbListBlack对象对应的数据库表中的OPTYPE，BLTYPE字段值要为1，然后调用iPbListBlackMapper.selectList方法，入参就为前面新建好的查询对象封装类
 ```
 >下面贴上查询实体的代码
-```
+```java
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
@@ -44,32 +44,37 @@ sectionQueryWrapper.eq("BLTYPE", 1);
 public class PbListBlack extends Model<PbListBlack> {
    @TableField("ID")
    private Long id;
-
+   
    @TableField("USERID")
    private String userId;
+   
    @TableField("SPGATE")
    private String spgate;
+   
    @TableField("SPNUMBER")
    private String spnumber;
+   
    @TableField("PHONE")
    private Long phone;
+   
    @TableField("OPTYPE")
    private Integer optype;
+   
    @TableField("OPTTIME")
    private Timestamp optTime;
+   
    @TableField("CORPCODE")
    private String corpCode;
+   
    @TableField("SVRTYPE")
    private String svrType;
-
+   
    @TableField("MSG")
    private String msg = " ";
-
+   
    @ApiModelProperty(value = "黑名单类型。1：短信；2：彩信")
    @TableField("BLTYPE")
    private Integer blType;
-
-
 }
 ```
 
