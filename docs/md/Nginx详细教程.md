@@ -1,6 +1,6 @@
 # Nginx详细教程  2022年12月24日
 
-> 本文转自 https://www.jianshu.com/p/96d3b1fba09b
+> 2022年12月24日，本文转自 https://www.jianshu.com/p/96d3b1fba09b
 
 ## 一、Nginx介绍
 

@@ -1,6 +1,6 @@
 # MybatisPlus条件构造器  2022年12月24日
 
-> 本文转自 https://blog.csdn.net/bird_tp/article/details/105587582
+> 2022年12月24日，本文转自 https://blog.csdn.net/bird_tp/article/details/105587582
 
 > 首先奉上mybatis plus的官方文档链接，再看本博客有不清晰的地方，可以查看文档 https://baomidou.com/
 

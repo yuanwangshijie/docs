@@ -1,10 +1,10 @@
-# Docker常用命令整理 2022年12月24日
+# Docker常用命令整理
 
-> 本文转自 https://zhuanlan.zhihu.com/p/54946336
+> 2022年12月24日，本文转自 https://zhuanlan.zhihu.com/p/54946336
 
 ## 常用命令
 
-``` 
+```
 docker pull ${CONTAINER NAME}                         #拉取镜像
 docker images                                         #查看本地所有镜像
 docker ps                                             #查看所有正在运行的容器，加-q返回id
