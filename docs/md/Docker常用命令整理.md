@@ -2,7 +2,7 @@
 
 > 2022年12月24日，本文转自 https://zhuanlan.zhihu.com/p/54946336
 
-## 常用命令
+## 一、常用命令
 
 ```
 docker pull ${CONTAINER NAME}                         #拉取镜像
@@ -24,7 +24,7 @@ docker run...                                         #运行一个容器
     -v ${host folder path}:${container folder path}   #将主机目录挂在到容器内
 ```
 
-## 高级命令
+## 二、高级命令
 
 ```
 # Advance use 

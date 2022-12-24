@@ -1,4 +1,4 @@
-# Nginx详细教程  2022年12月24日
+# Nginx详细教程
 
 > 2022年12月24日，本文转自 https://www.jianshu.com/p/96d3b1fba09b
 
@@ -6,39 +6,33 @@
 
 ### 1.1 引言
 
-> 为什么要学习Nginx
->
->问题1：客户端到底要将请求发送给哪台服务器
->
->问题2：如果所有客户端的请求都发送给了服务器
->
->问题3：客户端发送的请求可能是申请动态资源的，也有申请静态资源的
+> 为什么要学习`Nginx`<br>
+> 问题1：客户端到底要将请求发送给哪台服务器<br>
+> 问题2：如果所有客户端的请求都发送给了服务器<br>
+> 问题3：客户端发送的请求可能是申请动态资源的，也有申请静态资源的<br>
 
-> 服务器搭建集群后：
+**服务器搭建集群后**
 
 ![](../static/img/nginx-01.png)
 
-> 在搭建集群后，使用Nginx做反向代理：
+**在搭建集群后，使用Nginx做反向代理**
 
 ![](../static/img/nginx-02.png)
 
 ### 1.2 Nginx介绍
 
-> Nginx是由俄罗斯人研发的，应对Rambler的网站并发，并且2004年发布的第一个版本
+`Nginx`是由俄罗斯人研发的，应对`Rambler`的网站并发，并且2004年发布的第一个版本
 
-> Nginx的特点
->
->1.稳定性极强，7*24小时不间断运行(就是一直运行)
->
->2.Nginx提供了非常丰富的配置实例
->
->3.占用内存小，并发能力强（随便配置一下就是5w+，而tomcat的默认线程池是150）
+> **Nginx的特点**
+> 1. 稳定性极强，7*24小时不间断运行(就是一直运行)
+> 2. Nginx提供了非常丰富的配置实例
+> 3. 占用内存小，并发能力强（随便配置一下就是5w+，而tomcat的默认线程池是150）
 
 ## 二、Nginx的安装
 
 ### 2.1 安装Nginx
 
-> 使用docker-compose安装
+使用`docker-compose`安装
 
 ```
 #在/opt目录下创建docker_nginx目录
@@ -65,7 +59,7 @@ services:
 
 ### 2.2 Nginx的配置文件
 
-> Nginx的核心配置文件
+`Nginx`的核心配置文件
 
 ```
 # 查看当前nginx的配置需要进入docker容器中
@@ -75,7 +69,7 @@ cd /etc/nginx/
 cat nginx.conf
 ```
 
-> `nginx.conf `文件内容如下
+`nginx.conf`文件内容如下
 
 ```
 user  nginx;
@@ -120,7 +114,7 @@ http {
 # include /etc/nginx/conf.d/*.conf; 引入了conf.d下以.conf为结尾的配置文件
 ```
 
-> `conf.d`目录下只有一个`default.conf`文件，内容如下
+`conf.d`目录下只有一个`default.conf`文件，内容如下
 
 ```
 server {
@@ -176,16 +170,15 @@ docker-compose bulid
 docker-compose up -d
 ```
 
-> 这时我们再次访问`80`端口是访问不到的，因为我们映射了数据卷之后还没有编写`server`块中的内容
+这时我们再次访问`80`端口是访问不到的，因为我们映射了数据卷之后还没有编写`server`块中的内容
 
-> 我们在`/opt/docker_nginx/conf.d`下新建`default.conf`，并插入如下内容
+接下来我们在`/opt/docker_nginx/conf.d`下新建`default.conf`，并插入如下内容
 
 ```
 server {
     listen       80;
     listen  [::]:80;
     server_name  localhost;
-
     location / {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
@@ -203,53 +196,43 @@ docker-compose restart
 ### 3.1 正向代理和反向代理介绍
 
 > 正向代理：
->
-> 1.正向代理服务是由客户端设立的
->
-> 2.客户端了解代理服务器和目标服务器都是谁
->
-> 3.帮助咱们实现突破访问权限，提高访问的速度，对目标服务器隐藏客户端的ip地址
+> 1. 正向代理服务是由客户端设立的
+> 2. 客户端了解代理服务器和目标服务器都是谁
+> 3. 帮助咱们实现突破访问权限，提高访问的速度，对目标服务器隐藏客户端的ip地址
 
 ![](../static/img/nginx-03.png)
 
 > 反向代理：
->
->1.反向代理服务器是配置在服务端的
->
->2.客户端不知道访问的到底是哪一台服务器
->
->3.达到负载均衡，并且可以隐藏服务器真正的ip地址
+>1. 反向代理服务器是配置在服务端的
+>2. 客户端不知道访问的到底是哪一台服务器
+>3. 达到负载均衡，并且可以隐藏服务器真正的ip地址
 
 ![](../static/img/nginx-04.png)
 
 ### 3.2 基于Nginx实现反向代理
 
-> 准备一个目标服务器
->
->启动tomcat服务器
->
->编写nginx的配置文件(/opt/docker_nginx/conf.d/default.conf)，通过Nginx访问到tomcat服务器
+> 1. 准备一个目标服务器
+> 2. 启动tomcat服务器
+> 3. 编写nginx的配置文件(/opt/docker_nginx/conf.d/default.conf)，通过Nginx访问到tomcat服务器
 
 
-> 准备`Tomcat`服务器
+准备`Tomcat`服务器
 
 ```
 docker run -d -p 8080:8080 --name tomcat  daocloud.io/library/tomcat:8.5.15-jre8
 #或者已经下载了tomcat镜像
 docker run -d -p 8080:8080 --name tomcat 镜像的标识
-
 #添加数据卷
 docker run -it -v /宿主机绝对目录:/容器内目录 镜像名
 ```
 
-> `default.conf`文件内容如下
+`default.conf`文件内容如下
 
 ```
 server {
     listen       80;
     listen  [::]:80;
     server_name  localhost;
-
     # 基于反向代理访问Tomcat服务器
     location / {
         proxy_pass http://IP:8080/;
@@ -262,7 +245,7 @@ server {
 docker-compose restart
 ```
 
-> 这时我们访问80端口可以看到8080端口tomcat的默认首页
+这时我们访问`80`端口可以看到`8080`端口tomcat的默认首页
 
 ### 3.3 关于Nginx的location路径映射
 
@@ -342,12 +325,9 @@ docker-compose restart
 ## 四、Nginx负载均衡
 
 > Nginx为我们默认提供了三种负载均衡的策略：
->
->1.轮询： 将客户端发起的请求，平均分配给每一台服务器
->
->2.权重： 会将客户端的请求，根据服务器的权重值不同，分配不同的数量
->
->3.ip_hash: 基于发起请求的客户端的ip地址不同，他始终会将请求发送到指定的服务器上 就是说如果这个客户端的请求的ip地址不变，那么处理请求的服务器将一直是同一个
+>1. 轮询： 将客户端发起的请求，平均分配给每一台服务器
+>2. 权重： 会将客户端的请求，根据服务器的权重值不同，分配不同的数量
+>3. ip_hash: 基于发起请求的客户端的ip地址不同，他始终会将请求发送到指定的服务器上 就是说如果这个客户端的请求的ip地址不变，那么处理请求的服务器将一直是同一个
 
 ### 4.1 轮询
 
@@ -412,12 +392,7 @@ server {
 
 ## 五、Nginx动静分离
 
-> Nginx的并发能力公式：
->
-> worker_processes * worker_connections / 4|2 = Nginx最终的并发能力
->
-> 动态资源需要/4，静态资源需要/2
->
+> Nginx的并发能力公式： `worker_processes` * `worker_connections` / (4 or 2)，动态资源需要/4，静态资源需要/2<br>
 > Nginx通过动静分离来提升Nginx的并发能力，更快的给用户响应
 
 ### 5.1 动态资源代理
@@ -476,13 +451,10 @@ docker-compose restart
 
 ### 6.1 引言
 
-> 单点故障，避免nginx的宕机，导致整个程序的崩溃
->
-> 准备多台Nginx
->
-> 准备keepalived，监听nginx的健康情况
->
-> 准备haproxy，提供一个虚拟的路径，统一的去接收用户的请求
+> 目的：避免单点nginx的宕机，导致整个程序的崩溃
+> * 准备多台nginx
+> * 准备keepalived，监听nginx的健康情况
+> * 准备haproxy，提供一个虚拟的路径，统一的去接收用户的请求
 
 ![](../static/img/nginx-05.png)
 
@@ -504,15 +476,10 @@ docker-compose up -d
 
 ```
 FROM nginx:1.13.5-alpine
-
 RUN apk update && apk upgrade
-
 RUN apk add --no-cache bash curl ipvsadm iproute2 openrc keepalived
-
 COPY entrypoint.sh /entrypoint.sh
-
 RUN chmod +x /entrypoint.sh
-
 CMD ["/entrypoint.sh"]
 ```
 
