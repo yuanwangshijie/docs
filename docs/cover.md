@@ -7,5 +7,3 @@
 
 [GitHub](https://github.com/yuanwangshijie/yuanwangshijie.github.io)
 [开始阅读](README.md)
-
-[//]: # (![]&#40;https://api.mtyqx.cn/api/random.php&#41;)
