@@ -1,11 +1,12 @@
-# MybatisPlus条件构造器
+# MybatisPlus条件构造器  2022年12月24日
 
->本文转自 https://blog.csdn.net/bird_tp/article/details/105587582
+> 本文转自 https://blog.csdn.net/bird_tp/article/details/105587582
 
->首先奉上mybatis plus的官方文档链接，再看本博客有不清晰的地方，可以查看文档 https://baomidou.com/
+> 首先奉上mybatis plus的官方文档链接，再看本博客有不清晰的地方，可以查看文档 https://baomidou.com/
 
 ## 一、queryWrapper是什么
->queryWrapper是mybatis plus中实现查询的对象封装操作类，他的层级关系如下
+
+> queryWrapper是mybatis plus中实现查询的对象封装操作类，他的层级关系如下
 
 ![](../static/img/mybatis-01.png)
 
@@ -34,51 +35,55 @@ sectionQueryWrapper.eq("OPTYPE", 1);
 sectionQueryWrapper.eq("BLTYPE", 1);
 这两句的意思是PbListBlack对象对应的数据库表中的OPTYPE，BLTYPE字段值要为1，然后调用iPbListBlackMapper.selectList方法，入参就为前面新建好的查询对象封装类
 ```
->下面贴上查询实体的代码
+
+> 下面贴上查询实体的代码
+
 ```java
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("PB_LIST_BLACK")
 @ApiModel(value = "PB_LIST_BLACK对象", description = "")
 public class PbListBlack extends Model<PbListBlack> {
-   @TableField("ID")
-   private Long id;
-   
-   @TableField("USERID")
-   private String userId;
-   
-   @TableField("SPGATE")
-   private String spgate;
-   
-   @TableField("SPNUMBER")
-   private String spnumber;
-   
-   @TableField("PHONE")
-   private Long phone;
-   
-   @TableField("OPTYPE")
-   private Integer optype;
-   
-   @TableField("OPTTIME")
-   private Timestamp optTime;
-   
-   @TableField("CORPCODE")
-   private String corpCode;
-   
-   @TableField("SVRTYPE")
-   private String svrType;
-   
-   @TableField("MSG")
-   private String msg = " ";
-   
-   @ApiModelProperty(value = "黑名单类型。1：短信；2：彩信")
-   @TableField("BLTYPE")
-   private Integer blType;
+    @TableField("ID")
+    private Long id;
+
+    @TableField("USERID")
+    private String userId;
+
+    @TableField("SPGATE")
+    private String spgate;
+
+    @TableField("SPNUMBER")
+    private String spnumber;
+
+    @TableField("PHONE")
+    private Long phone;
+
+    @TableField("OPTYPE")
+    private Integer optype;
+
+    @TableField("OPTTIME")
+    private Timestamp optTime;
+
+    @TableField("CORPCODE")
+    private String corpCode;
+
+    @TableField("SVRTYPE")
+    private String svrType;
+
+    @TableField("MSG")
+    private String msg = " ";
+
+    @ApiModelProperty(value = "黑名单类型。1：短信；2：彩信")
+    @TableField("BLTYPE")
+    private Integer blType;
 }
 ```
 
->然后是iPbListBlackMapper的代码，代码很简单
+> 然后是iPbListBlackMapper的代码，代码很简单
+
 ```
 @Repository
 public interface IPbListBlackMapper extends BaseMapper<PbListBlack> {
@@ -88,7 +93,9 @@ public interface IPbListBlackMapper extends BaseMapper<PbListBlack> {
 ```
 
 ## 三、QueryWrapper的方法
+
 ![](../static/img/mybatis-02.png)
 
 ## 四、总结
-&emsp;&emsp;上面的博客内容虽然简单，也只展示了一个查询的功能。在你实际使用的时候，可以按照  条件构造器上面包含的的方法，设置你查询数据的条件，调用BaseMapper里相应的方法即可
+
+&emsp;&emsp;上面的博客内容虽然简单，也只展示了一个查询的功能。在你实际使用的时候，可以按照 条件构造器上面包含的的方法，设置你查询数据的条件，调用BaseMapper里相应的方法即可
